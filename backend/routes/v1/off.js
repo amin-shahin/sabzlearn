@@ -9,11 +9,11 @@ const router = express.Router();
 router
   .route("/")
   .post(authenticatedMiddleware, isAdminMiddleware, controller.create)
-  .get(authenticatedMiddleware, isAdminMiddleware, controller.getAll);
+  .get(controller.getAll);
 
-router.route("/all").post(authenticatedMiddleware, isAdminMiddleware, controller.setOnAll);
-
-router.route("/:code").post(authenticatedMiddleware, controller.getOne);
+router
+  .route("/:code")
+  .post(authenticatedMiddleware, controller.getOne)
 
 router
   .route("/:id")

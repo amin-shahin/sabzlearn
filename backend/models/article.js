@@ -25,15 +25,11 @@ const schema = new mongoose.Schema(
     categoryID: {
       type: mongoose.Types.ObjectId,
       ref: "Category",
-      required: true,
+      require: true,
     },
     creator: {
       type: mongoose.Types.ObjectId,
       ref: "User",
-    },
-    publish: {
-      type: Number,
-      required: true,
     },
   },
   { timestamps: true }

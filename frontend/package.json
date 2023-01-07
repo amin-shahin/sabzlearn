@@ -17,6 +17,7 @@
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
     "sweetalert": "^2.1.2",
+    "swiper": "^8.4.5",
     "typewriter-effect": "^2.19.0",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"

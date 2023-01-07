@@ -8,7 +8,7 @@ const AuthContextProvider =({children})=>{
     const [token,setToken] = useState(null)
     const [userInfos,setUserInfos] = useState({})
 
-    const login = useCallback((userInfos,token)=>{
+    const login = ((userInfos,token)=>{
       setToken(token)
       setUserInfos(userInfos)
       setIsLoggedIn(true)
@@ -18,7 +18,7 @@ const AuthContextProvider =({children})=>{
       setToken(null)
       setUserInfos({})
       localStorage.removeItem('user')
-  },[])
+  })
 
     useEffect(()=>{
       const localStorageData =JSON.parse(localStorage.getItem('user'))

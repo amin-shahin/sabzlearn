@@ -41,8 +41,7 @@ const schema = new mongoose.Schema(
     course: {
       type: mongoose.Types.ObjectId,
       required: false,
-      ref: 'Course',
-      default: '634e6b0e1d5142b91afa9bb3'
+      ref: 'Course'
     },
     isAnswer: {
       type: Number,

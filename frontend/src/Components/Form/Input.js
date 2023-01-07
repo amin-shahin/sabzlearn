@@ -65,7 +65,7 @@ const Input = (props) => {
 
 
     return ( 
-    <div>
+    <div style={{width:'100%'}}>
         {element}
     </div>
      );

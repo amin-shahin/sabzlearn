@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
+import ArticleBox from "../../Components/ArticleBox/ArticleBox";
 import Breadcrumb from "../../Components/Breadcrumb/Breadcrumb";
-import CourseBox from "../../Components/CourseBox/CourseBox";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import Pagination from "../../Components/Pagination/Pagination";
 import Topbar from "../../Components/Topbar/Topbar";
-import './Courses.css'
+
 
 const Courses = () => {
 
-    const [allCourses,setAllCourses]= useState([])
-    const [shownCourses,setShownCourses] = useState([])
+    const [allArticles,setAllArticles]= useState([])
+    const [shownArticles,setShownArticles] = useState([])
 
     useEffect(()=>{
             const fetchData = async () => {
-            const res = await fetch(`http://localhost:4000/v1/courses`)
+            const res = await fetch(`http://localhost:4000/v1/articles`)
             const result = await res.json()
-            setAllCourses(result)
+            setAllArticles(result)
+            console.log("art",result);
             }
             fetchData()
     },[])
@@ -28,7 +29,7 @@ const Courses = () => {
         <Breadcrumb 
         links={[
             {id:1,title:'خانه',to:''},
-            {id:2,title:'تمامی دوره ها',to:'courses'},  
+            {id:2,title:'تمامی مقاله ها',to:'articles/1'},  
         ]}
         />
         <div className="courses">
@@ -36,16 +37,16 @@ const Courses = () => {
                 <div className="courses-content">
                     <div className="container">
                         <div className="row">
-                            {shownCourses.map( course =>(
-                                <CourseBox {...course}/>
+                            {shownArticles.map( article =>(
+                                <ArticleBox {...article}/>
                             ))}
                         </div>
                     </div>
                   <Pagination
-                  items={allCourses}
+                  items={allArticles}
                   itemsCount={3}
-                  pathname="/courses"
-                  setShownCourses={setShownCourses}
+                  pathname="/articles"
+                  setShownCourses={setShownArticles}
                   />
                 </div>
             </div>
