@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import CircleSpinner from "../CircleSpinner/CircleSpinner";
 import './CourseBox.css'
 
-const CourseBox = ({courseTitle,courseTeacher,coursePrice,courseUsers}) => {
+const CourseBox = (props) => {
+
   const [isShowImg,setIsShowImg] = useState(false)
   const onLoadImage = ()=>setIsShowImg(true)
   const onErrorImage = ()=>{
@@ -11,22 +13,21 @@ const CourseBox = ({courseTitle,courseTeacher,coursePrice,courseUsers}) => {
     return ( 
         
             
-              <div className="col-4">
+              <div className="col-4" style={{width:`${props.isSlider && '100%'}`}}>
                 <div className="course-box">
-                  <a href="#">
-                    <img onLoad={onLoadImage} onError={onErrorImage} src="/images/courses/fareelancer.png" alt="Course img" className="course-box__img" />
-                    {/* <img onLoad={onLoadImage} src="https://placeimg.com/295/295/any/tech=190129384" alt="Course img" className="course-box__img" /> */}
+                  <Link to={`/course-info/${props.shortName}`}>
+                    <img onLoad={onLoadImage} onError={onErrorImage} src={props.cover} alt="Course img" className="course-box__img" />
                     {!isShowImg && (
                       <CircleSpinner/>
                     )}
-                  </a>
+                  </Link>
                   <div className="course-box__main">
-                    <a href="#" className="course-box__title">{courseTitle}</a>
+                    <Link to={`/course-info/${props.shortName}`} className="course-box__title">{props.name} </Link>
 
                     <div className="course-box__rating-teacher">
                       <div className="course-box__teacher">
                         <i className="fas fa-chalkboard-teacher course-box__teacher-icon"></i>
-                        <a href="#" className="course-box__teacher-link">{courseTeacher}</a>
+                        {/* <span  className="course-box__teacher-link">{props.creator.name}</span> */}
                       </div>
                       <div className="course-box__rating">
                         <img src="/images/svgs/star.svg" alt="rating" className="course-box__star" />
@@ -40,17 +41,19 @@ const CourseBox = ({courseTitle,courseTeacher,coursePrice,courseUsers}) => {
                     <div className="course-box__status">
                       <div className="course-box__users">
                         <i className="fas fa-users course-box__users-icon"></i>
-                        <span className="course-box__users-text">{courseUsers}</span>
+                        <span className="course-box__users-text"></span>
                       </div>
-                      <span className="course-box__price">{coursePrice}</span>
+                      <span className="course-box__price">{
+                        props.price === 0 ? ' رایگان' : `${(props.price.toLocaleString())}تومان` 
+                      }</span>
                     </div>
                   </div>
 
                   <div className="course-box__footer">
-                    <a href="#" className="course-box__footer-link">
+                    <Link to={`/course-info/${props.shortName}`} className="course-box__footer-link">
                       مشاهده اطلاعات
                       <i className="fas fa-arrow-left course-box__footer-icon"></i>
-                    </a>
+                    </Link>
                   </div>
 
                 </div>

@@ -116,3 +116,193 @@
     font-size: 1.8rem;
     cursor: pointer;
 }
+
+/* ============================== Courses Style ============================== */
+.courses {
+    margin: 4rem 0;
+  }
+  .courses-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.2rem;
+    box-shadow: 0 0 13px 1px rgba(70, 72, 77,  .08);
+    border-radius: .5rem;
+    border: .1rem solid  #f2f2f2;
+  }
+  .courses-top-bar__right {
+    display: flex;
+    align-items: center;
+  }
+  .courses-top-bar__row-btn,
+  .courses-top-bar__column-btn {
+    padding: 0.8rem 1rem;
+    border-radius: 0.3rem;
+    width: 4.2rem;
+    height: 3.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    color: #000;
+    border: 1px solid #e5e5e5;
+    cursor: pointer;
+  }
+  .courses-top-bar__icon--active {
+    background-color: #1e83f0;
+    color: var(--white-color);
+  }
+  .courses-top-bar__selection {
+    cursor: pointer;
+    position: relative;
+  }
+  .courses-top-bar__selection-title {
+    display: flex;
+    align-items: center;
+    height: 3.8rem;
+    border-radius: 0.3rem;
+    padding: 0.8rem 2rem;
+    border: 1px solid #e5e5e5;
+    color: #7d7e7f;
+    transition: all 400ms ease;
+  }
+  .courses-top-bar__selection-title:hover {
+    color: var(--white-color);
+    background-color: #1e83f0;
+  }
+  
+  .courses-top-bar__selection-icon {
+    margin-right: 0.5rem;
+  }
+  .courses-top-bar__selection-list {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 0 6px rgb(0, 0 ,0 , .2);
+    background-color: var(--white-color);
+    width: 100%;
+    padding: .8rem 0;
+    border-bottom: .3rem solid var(--primary-color);
+    border-radius:  0 0 .3rem .3rem;
+    transition: all 400ms ease;
+    z-index: 9999;
+  }
+  .courses-top-bar__selection:hover .courses-top-bar__selection-list{
+    opacity: 1;
+    visibility: visible;
+  }   
+  .courses-top-bar__selection-item {
+    color: #5f5f5f;
+    font-size: 1.4rem;
+    padding: .9rem 1.5rem;
+    transition: all 200ms ease;
+  }
+  .courses-top-bar__selection-item:hover {
+    background-color: #f0f0f0;
+  }
+  .courses-top-bar__selection-item--active {
+    background-color: #ddd !important;
+  }
+  .courses-top-bar__form {
+    position: relative; 
+    width: 30rem;   
+  }
+  .courses-top-bar__input {
+    width: 100%;
+    padding: .8rem 1.5rem .8rem 4.2rem;
+    border: 1px solid #dcdcdc;
+    border-radius: .3rem;
+    font-size: 1.5rem;
+  }
+  .courses-top-bar__search-icon {
+    position: absolute;
+    left: 0;
+    left: 1rem;
+    top: 1rem;
+    color: #7d7e7f;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+  .course-box{
+    box-shadow: 0 0 13px 1px rgba(70, 72, 77, .08);
+    margin: 2rem 0;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .course__box-header{
+    display: flex;
+  }
+  
+  .course__box-right-img{
+    height: 100%;
+    max-width: 350px;
+  }
+  
+  .course__box-left{
+  padding: 1rem 1.5rem;
+  flex: 1;
+  }
+  
+  .course__box-left-link{
+    font-size: 1.7rem;
+    font-weight: bold;
+    padding: 1rem 0;
+    display: block;
+  }
+  .course__box-left-center{
+    display: flex;
+    justify-content: space-between;
+  }
+  .course__box-left-teacher{
+    color: #7d7e7f;
+  }
+  .course__box-left-name{
+    font-size: 1.4rem;
+  }
+  .course__box-left-bottom{
+    margin: 1rem;
+  }
+  .course__box-left-des{
+    font-size: 1.5rem;
+    text-align: start;
+    color: var(--dark-color);
+  }
+  .course__box-footer{
+    display: flex;
+    justify-content: space-between;
+  }
+  .course__box-footer-right{
+    color: #7d7e7f;
+  }
+  .course__box-footer-left{
+    color: #7d7e7f;
+  
+  }
+  .courses-pagantion {
+    margin: 3rem 0;
+  }
+  .courses__pagantion-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .courses__pagantion-link {
+    border-radius: 0.5rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background-color: #f0f0f1;
+    margin: 0 0.5rem;
+  }
+  .courses__pagantion-link:hover {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+  }
+  .courses__pagantion-link--active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+  /* ============================== Courses Style ============================== */

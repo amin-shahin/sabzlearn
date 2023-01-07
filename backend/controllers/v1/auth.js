@@ -1,16 +1,16 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-const userModel = require("../../models/user");
-const courseUserModel = require("../../models/course-user");
-const banUserModel = require("../../models/ban-phone");
-const notificationsModel = require("../../models/notification");
-const registerValidator = require("../../validators/v1/register");
+const userModel = require('../../models/user');
+const courseUserModel = require('../../models/course-user');
+const registerValidator = require('../../validators/v1/register');
 
 exports.register = async (req, res) => {
-  // const validationResult = registerValidator(req.body);
-  // if (validationResult != true) return res.status(422).json(validationResult);
-  const { username, password, name, email, phone } = req.body;
+  console.log(req.body);
+  
+  const validationResult = registerValidator(req.body);
+  if (validationResult != true) return res.status(422).json(validationResult);
+  const { username, password, name, email } = req.body;
 
   const isUserExists = await userModel.findOne({
     $or: [{ username }, { email }],
@@ -20,14 +20,7 @@ exports.register = async (req, res) => {
 
   if (isUserExists) {
     return res.status(409).json({
-      message: "username or email is duplicate.",
-    });
-  }
-
-  const isUserBan = await banUserModel.find({ phone });
-  if (isUserBan.length) {
-    return res.status(403).json({
-      message: "this phone number ban!"
+      message: 'username or email is duplicate.',
     });
   }
 
@@ -37,17 +30,16 @@ exports.register = async (req, res) => {
     email,
     username,
     name,
-    phone,
     password: hashedPassword,
-    role: countOfRegisteredUser > 0 ? "USER" : "ADMIN",
+    role: countOfRegisteredUser > 0 ? 'USER' : 'ADMIN',
   });
 
   const userObject = user.toObject();
 
-  Reflect.deleteProperty(userObject, "password");
+  Reflect.deleteProperty(userObject, 'password');
 
   const accessToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: "60 day",
+    expiresIn: '1 day',
   });
 
   return res.status(201).json({ user: userObject, accessToken });
@@ -61,17 +53,17 @@ exports.login = async (req, res) => {
   });
 
   if (!user) {
-    return res.status(401).json("there is no user with this email or username");
+    return res.status(401).json('there is no user with this email or username');
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
-    return res.status(401).json({ message: "password is not correct" });
+    return res.status(401).json({ message: 'password is not correct' });
   }
 
   const accessToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: "60 day",
+    expiresIn: '30 day',
   });
 
   return res.json({ accessToken });
@@ -80,7 +72,7 @@ exports.login = async (req, res) => {
 exports.getMe = async (req, res) => {
   const userCourses = await courseUserModel
     .find({ user: req.user._id })
-    .populate("course");
+    .populate('course');
 
   const courses = [];
 
@@ -88,20 +80,5 @@ exports.getMe = async (req, res) => {
     courses.push(userCourse.course);
   }
 
-  const adminNotifications = await notificationsModel.find({
-    admin: req.user._id,
-  });
-
-  const notifications = [];
-
-  for (const adminNotification of adminNotifications) {
-    if (adminNotification.see === 0) {
-      notifications.push({
-        msg: adminNotification.msg,
-        _id: adminNotification._id,
-      });
-    }
-  }
-
-  return res.json({ ...req.user, courses, notifications });
+  return res.json({ ...req.user, courses });
 };

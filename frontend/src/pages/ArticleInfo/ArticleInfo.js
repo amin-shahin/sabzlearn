@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Breadcrumb from "../../Components/Breadcrumb/Breadcrumb";
 import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
 import Footer from "../../Components/Footer/Footer";
@@ -7,6 +8,24 @@ import Topbar from "../../Components/Topbar/Topbar";
 import "./ArticleInfo.css"
 
 const ArticleInfo = () => {
+
+    const {articleName} = useParams()
+
+    const [articleDetails,setArticleDetails] = useState({})
+    const [articleCreator,setArticleCreator] = useState({})
+    const [articleCategory,setArticleCategory] = useState({})
+    useEffect(()=>{
+    
+  
+      fetch(`http://localhost:4000/v1/articles/${articleName}`).then(res =>res.json())
+      .then(results => {
+        setArticleDetails(results)
+        setArticleCreator(results.creator)
+        setArticleCategory(results.creator)
+        console.log(results);
+      })
+    },[])
+
     return ( 
     <>
         <Topbar/>
@@ -25,25 +44,26 @@ const ArticleInfo = () => {
                 <div class="col-8">
               <div class="article">
                 <h1 class="article__title">
-                  معرفی بهترین سایت آموزش جاوا اسکریپت [ تجربه محور ] + آموزش رایگان
+                  {articleDetails.title}
                 </h1>
                 <div class="article__header">
                   <div class="article-header__category article-header__item">
                     <i class="far fa-folder article-header__icon"></i>
-                    <a href="#" class="article-header__text">جاوا اسکریپت</a>
+                    <Link to="#" class="article-header__text"> {articleCategory.name}</Link>
                   </div>
                   <div class="article-header__category article-header__item">
                     <i class="far fa-user article-header__icon"></i>
-                    <span class="article-header__text"> ارسال شده توسط قدیر</span>
+                    <span class="article-header__text"> ارسال شده توسط <span>{articleCreator.name}</span></span>
                   </div>
                   <div class="article-header__category article-header__item">
                     <i class="far fa-clock article-header__icon"></i>
-                    <span class="article-header__text"> ارسال شده توسط قدیر</span>
+                    <span class="article-header__text"> 
+                    تاریخ انتشار
+                    {' '}
+                    {articleDetails.createdAt.slice(0,10)}
+                    </span>
                   </div>
-                  <div class="article-header__category article-header__item">
-                    <i class="far fa-eye article-header__icon"></i>
-                    <span class="article-header__text">  2.14k بازدید</span>
-                  </div>
+
                 </div>
                 <img src="/images/blog/1.jpg" alt="Article Cover" class="article__banner" />
 
@@ -145,7 +165,7 @@ const ArticleInfo = () => {
                 </div>
               </div>
 
-                <CommentsTextArea/>
+                {/* <CommentsTextArea/> */}
 
             </div>
   

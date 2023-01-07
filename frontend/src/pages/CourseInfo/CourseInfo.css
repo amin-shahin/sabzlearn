@@ -20,7 +20,9 @@
     font-size: 1.6rem;
     color: #7b868a;
 }
-
+.course-info__social-media{
+    justify-self: end;
+}
 .course-info__social-media-item {
     color: #b1bbbf;
     margin-left: 1.7rem;
@@ -278,6 +280,7 @@
 
 .course-info__register-icon {
     font-size: 2rem;
+    margin-left: 20px;
 }
 
 .course-info__top {

@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = memo(() => {
 
 
   const authContextData = useContext(AuthContext)
@@ -15,6 +15,7 @@ const Navbar = () => {
       .then(res => res.json())
       .then(menus => {
         setAllMenusInNavbar(menus)
+        console.log('navbar',menus);
       })
     },[])
     return ( 
@@ -33,10 +34,10 @@ const Navbar = () => {
                   {
                     allMenusInNavbar.map(menu =>(
                       <li key={menu._id} className="main-header__item">
-                        <Link to={menu.href} className="main-header__link"> {menu.title}
+                        <Link to={`${menu.href}/1`} className="main-header__link"> {menu.title}
                         {menu.submenus.length !== 0 &&  (
-                          <>
-                          <i className="fas fa-angle-down main-header__link-icon"></i>
+                          <div className="main-header__link-wrapper">
+                          <i className="fas fa-angle-down main-header__link-icon "></i>
                           <ul className="main-header__dropdown">
                             { menu.submenus.map(subMenu=>(
 
@@ -45,7 +46,7 @@ const Navbar = () => {
                             </li>
                             ))}
                           </ul>
-                        </>
+                        </div>
                         )}
                         </Link>
                      </li>
@@ -81,4 +82,5 @@ const Navbar = () => {
      );
 }
  
+)
 export default Navbar;

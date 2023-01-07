@@ -34,9 +34,17 @@
   .main-header__link:hover {
     color: #7f8187;
   }
-  
+  .main-header__link-wrapper{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .main-header__link-icon {
     margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   /* Start DropDown Styles */

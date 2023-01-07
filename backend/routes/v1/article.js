@@ -1,36 +1,24 @@
-const express = require("express");
-const multer = require("multer");
+const express = require('express');
+const multer = require('multer');
 
-const articleController = require("../../controllers/v1/articleController");
-const multerStorage = require("../../util/multerStorage");
-const authenticatedMiddleware = require("../../middlewares/authenticated");
-const isAdminMiddleware = require("../../middlewares/isAdmin");
+const articleController = require('../../controllers/v1/articleController');
+const multerStorage = require('../../util/multerStorage');
+const authenticatedMiddleware = require('../../middlewares/authenticated');
+const isAdminMiddleware = require('../../middlewares/isAdmin');
 
 const router = express.Router();
 
 // router.use(authenticatedMiddleware);
 
 router
-  .route("/")
+  .route('/')
   .post(
-    multer({ storage: multerStorage, limits: { fileSize: 1000000000 } }).single(
-      "cover"
-    ),
-    authenticatedMiddleware,
+    // multer({ storage: multerStorage }).single('cover'),
     isAdminMiddleware,
     articleController.create
   )
   .get(articleController.getAll);
 
-router.route("/:shortName").get(articleController.getOne);
-router
-  .route("/draft")
-  .post(
-    multer({ storage: multerStorage, limits: {fileSize: 1000000000} }).single('cover'),
-    authenticatedMiddleware,
-    isAdminMiddleware,
-    articleController.saveDraft
-  );
-router.route("/:id").delete(articleController.remove);
+router.route('/:shortName').get(articleController.getOne);
 
 module.exports = router;

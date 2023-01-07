@@ -28,6 +28,5 @@ router
   .put(isAuthenticated, isAdminMiddleware, userController.banUser);
 
 router.route("/courses").get(isAuthenticated, userController.getUserCourses);
-router.route("/role").put(isAuthenticated, isAdminMiddleware, userController.changeUserRole);
 
 module.exports = router;
