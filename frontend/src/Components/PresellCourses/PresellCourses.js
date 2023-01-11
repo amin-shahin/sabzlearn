@@ -29,12 +29,12 @@ const  PresellCourses= () => {
                 pagination={{
                   clickable:true
                 }}
-                spaceBetween={30}
+                spaceBetween={25}
                 slidesPerView={3}
                 >
                   {presellCourses.map(presell =>(
                   <SwiperSlide key={presell.id}>
-                     <CourseBox {...presell}/>
+                     <CourseBox {...presell} isSlider='true'/>
                   </SwiperSlide>
                   ))}
                 </Swiper>

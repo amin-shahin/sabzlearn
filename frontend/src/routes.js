@@ -10,6 +10,12 @@ import Articles from './pages/articles/Articles'
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Search from "./Components/Search/Search";
 
+import AdminPanel from "./pages/AdminPanel/AdminPanel";
+import AdminCourses from "./pages/AdminPanel/AdminCourses";
+import AdminArticles from "./pages/AdminPanel/AdminArticles";
+import Users from "./pages/AdminPanel/Users";
+import Menus from "./pages/AdminPanel/Menus";
+
 
 
 let routes =[
@@ -23,6 +29,13 @@ let routes =[
     {path:'/register',element:<Register/>},
     {path:'/contact',element:<ContactUs/>},
     {path:'/search/:searchValue',element:<Search/>},
+    {path:'/admin-panel/*',element:<AdminPanel/>,
+    children:[
+        {path:'users',element:<Users/>},
+        {path:'courses',element:<AdminCourses/>},
+        {path:'articles',element:<AdminArticles/>},
+        {path:'menus',element:<Menus/>}
+    ]},
 ]
 
 export default routes

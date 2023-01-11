@@ -13,6 +13,7 @@ import './Register.css'
 const Register = () => {
 
   const authContextData = useContext(AuthContext)
+
   console.log(authContextData);
 
   const[formState,onChangeInputHandler] = useForm({
@@ -61,9 +62,7 @@ const Register = () => {
         },
         body:JSON.stringify(newUserRegister)
       }).then(res => res.json())
-      .then(result =>{
-        authContextData.login(result.user,result.accessToken)
-      })
+      .then(result => authContextData.login(result.user,result.accessToken))
     }
     else{
       alert('پسوردها مطابقت ندارند')

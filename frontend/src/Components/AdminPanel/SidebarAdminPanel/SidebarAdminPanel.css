@@ -1,0 +1,97 @@
+#sidebar {
+    background-color: #17203f;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+  }
+  #sidebar .sidebar-header {
+    border-bottom: 1px solid rgba(131, 131, 131, 0.63);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  #sidebar .sidebar-header .sidebar-logo {
+    padding: 15px 25px;
+  }
+  #sidebar .sidebar-header .sidebar-logo img {
+    width: 70px;
+  }
+  #sidebar .sidebar-header .sidebar-menu-btn {
+    padding: 10px 25px;
+  }
+  #sidebar .sidebar-header .sidebar-menu-btn i {
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  #sidebar .sidebar-menu {
+    margin-top: 40px;
+  }
+  #sidebar .sidebar-menu ul li:hover {
+    background: #353c50;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(#353c50),
+      to(rgba(0, 212, 255, 0))
+    );
+    background: linear-gradient(90deg, #353c50 0%, rgba(0, 212, 255, 0) 100%);
+  }
+  #sidebar .sidebar-menu ul li a {
+    color: #8c90a0;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    display: block;
+    padding: 15px 25px;
+    font-size: 15px;
+  }
+  #sidebar .sidebar-menu ul li a:hover {
+    color: #fff;
+  }
+  #sidebar .sidebar-menu ul li a i {
+    padding-left: 10px;
+  }
+  
+  .active-menu {
+    position: relative;
+    background: #353c50;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(#353c50),
+      to(rgba(0, 212, 255, 0))
+    );
+    background: linear-gradient(90deg, #353c50 0%, rgba(0, 212, 255, 0) 100%);
+  }
+  .active-menu a {
+    color: #fff !important;
+  }
+  .active-menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #4869ff;
+    width: 5px;
+    height: 100%;
+  }
+  
+
+  /* swal  */
+
+  .swal-button-container{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+  .swal-button-container .swal-button{
+    width: 100%;
+  }

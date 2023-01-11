@@ -37,11 +37,59 @@ const Login = () => {
             isValid:false
         }
     },false)
-console.log(formState);
-    const loginUser = (event)=>{
-    event.preventDefault()
 
-      const userInfoForLogin ={
+console.log('(!formState.isFormValid)',(formState.isFormValid));
+    const loginUser = (event)=>{
+
+      event.preventDefault()
+      console.log("clicked");
+
+      const userInfoForLogin = {
+        identifier:formState.inputs.username.value,
+        password:formState.inputs.password.value
+      }
+        fetch(`http://localhost:4000/v1/auth/login`,{
+        method: 'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(userInfoForLogin)
+      }).then( res => {
+        if(!res.ok){
+         return res.text().then( text =>{
+          throw new Error(text)
+         })
+        }
+        else{
+          return res.json()
+        }
+      })
+      .then(result =>{
+        console.log(result);
+        authContextData.login({},result.accessToken)
+        swal(
+          {
+            title:'با موفقیت وارد شدید',
+            icon:'success',
+            buttons:'ورود به پنل'
+           }).then(value => navigate('/'))
+        
+      }).catch(error =>{
+       swal(
+        {
+          title:'همچین کاربری وجود ندارد',
+          icon:'error',
+          buttons:'تلاش دوباره'
+         }
+       )
+      })
+    }
+
+    const loginUser2 = (event)=>{
+      event.preventDefault()
+      console.log("clicked");
+
+      const userInfoForLogin = {
         identifier:formState.inputs.username.value,
         password:formState.inputs.password.value
       }
@@ -140,7 +188,10 @@ console.log(formState);
                   onChange={onChangeRecaptcha}
                  />
             </div>
-            <Button className={`login-form__btn ${(formState.isFormValid) && isRecaptchaGoogleVerify ? 'login-form__btn_success':'login-form__btn_error'}`} type="submit" onClick={loginUser} disabled={(!formState.isFormValid) || isRecaptchaGoogleVerify }>
+
+            <Button onClick={loginUser} 
+                    className={`login-form__btn ${(formState.isFormValid) && isRecaptchaGoogleVerify ? 'login-form__btn_success':'login-form__btn_error'}`}
+                    disabled={(!formState.isFormValid) || !isRecaptchaGoogleVerify }>
               <i className="login-form__btn-icon fas fa-sign-out-alt"></i>
               <span className="login-form__btn-text">ورود</span>
             </Button>

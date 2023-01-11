@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useState } from "react";
-import { json } from "react-router-dom";
+
 
 const AuthContext = createContext()
 
@@ -8,14 +8,15 @@ const AuthContextProvider =({children})=>{
     const [token,setToken] = useState(null)
     const [userInfos,setUserInfos] = useState({})
 
-    const login = ((userInfos,token)=>{
+    const login = (userInfos,token) => {
       setToken(token)
       setUserInfos(userInfos)
       setIsLoggedIn(true)
       localStorage.setItem('user',JSON.stringify({ token }))
-  },[])
+    }
+
     const logout = useCallback(()=>{
-      setToken(null)
+      setToken(null) 
       setUserInfos({})
       localStorage.removeItem('user')
   })
@@ -25,16 +26,19 @@ const AuthContextProvider =({children})=>{
       if(localStorageData){
         fetch(`http://localhost:4000/v1/auth/me`,{
           headers:{
-            Authorization : `Bearer ${localStorageData.token}`
+            'Authorization' : `Bearer ${localStorageData.token}`
           }
         }).then(res => res.json())
         .then(userData => {
           setIsLoggedIn(true)
           setUserInfos(userData)
         })
+
+        }else{
+          setIsLoggedIn(false)
       }
-      // console.log(localStorageData);
-    },[login])
+
+    },[login,logout])
 
 
   return(

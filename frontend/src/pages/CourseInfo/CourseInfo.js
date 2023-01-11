@@ -28,7 +28,7 @@ const CourseInfo = () => {
       method:'POST',
       headers:{
         'Content-Type':'application/json',
-        Authorization: `Bearer ${localStorageData.token}`,
+        'Authorization': `Bearer ${localStorageData.token}`,
       },
       body:JSON.stringify({
         body: commentBody,
@@ -54,7 +54,7 @@ const CourseInfo = () => {
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${
+        'Authorization': `Bearer ${
           localStorageData === null ? ( null) : (localStorageData.token)
         }`,
       },
