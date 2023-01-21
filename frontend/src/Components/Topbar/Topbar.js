@@ -1,10 +1,15 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { InfosIndexContext } from "../../contexts/InfosIndexContext";
 import './Topbar.css'
 
 const Topbar = memo( () => {
-
+  
   const [allTopbarLinks,setAllTopbarLinks]=useState([])
+
+  const infosContextData = useContext(InfosIndexContext)
+
+  console.log(infosContextData);
   
   useEffect(()=>{
     fetch(`http://localhost:4000/v1/menus/topbar`)
@@ -25,7 +30,7 @@ const Topbar = memo( () => {
             <div className="top-bar__right">
               <ul className="top-bar__menu">
                 {getRandomItemsFromAllTopbarLinks(allTopbarLinks,5).map( link =>(
-                    <li className="top-bar__item">
+                  <li className="top-bar__item">
                     <Link to={link.href} className="top-bar__link">{link.title}</Link>
                   </li>
                 ))}
@@ -35,13 +40,17 @@ const Topbar = memo( () => {
             <div className="top-bar__left">
               <div className="top-bar__email">
                 <a href="#" className="top-bar__email-text top-bar__link">
-                  sabzlearn@gmail.com
+
+                 {infosContextData.infos.email}
+               
                 </a>
                 <i className="fas fa-envelope top-bar__email-icon"></i>
               </div>
               <div className="top-bar__phone">
                 <a href="#" className="top-bar__phone-text top-bar__link">
-                  09921558293
+               
+                 {infosContextData.infos.phone}
+
                 </a>
                 <i className="fas fa-phone top-bar__phone-icon"></i>
               </div>

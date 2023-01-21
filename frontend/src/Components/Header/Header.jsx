@@ -5,13 +5,16 @@ import Topbar from "../Topbar/Topbar";
 import './Header.css'
 
 const Header = () => {
-    return (
-        <header className="header">
 
-        <Topbar/>
-        <Navbar/>
-        <Landing/>
-      </header>
+  
+    return (
+       
+            <header className="header">
+                    <Topbar/>
+                    <Navbar/>
+                    <Landing />
+            </header>
+          
       );
 }
  

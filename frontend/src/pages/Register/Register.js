@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 import Footer from "../../Components/Footer/Footer";
 import Button from "../../Components/Form/Button";
 import Input from "../../Components/Form/Input";
@@ -61,7 +62,17 @@ const Register = () => {
           'Content-Type':'application/json'
         },
         body:JSON.stringify(newUserRegister)
-      }).then(res => res.json())
+      }).then(res => {
+        if(res.status === 403){
+          swal({
+            title:'این شماره تماس مسدود می باشد',
+            icon:'error',
+            button:'بستن'
+          })
+        }else{
+          return res.json()
+        }
+      })
       .then(result => authContextData.login(result.user,result.accessToken))
     }
     else{

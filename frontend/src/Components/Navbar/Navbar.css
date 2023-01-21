@@ -33,9 +33,10 @@
   
   .main-header__link:hover {
     color: #7f8187;
+   
   }
-  .main-header__link-wrapper{
 
+  .main-header__link-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;

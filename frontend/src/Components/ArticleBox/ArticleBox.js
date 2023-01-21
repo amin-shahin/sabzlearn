@@ -8,7 +8,7 @@ const ArticleBox = ({title,shortName,cover,description}) => {
               <div className="article-card">
                 <div className="article-card__header">
                   <Link to={`/article-info/${shortName}`} className="article-card__link-img">
-                    <img src={`/images/blog/${cover}`} className="article-card__img" alt="Article Cover" />
+                    <img src={`http://localhost:4000/courses/covers/${cover}`} className="article-card__img" alt="Article Cover" />
                   </Link>
                 </div>
                 <div className="article-card__content">

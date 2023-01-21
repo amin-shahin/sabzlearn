@@ -3,6 +3,7 @@ import routes from "./routes"
 import { useRoutes } from 'react-router-dom'
 import "./App.css"
 import AuthContextProvider from './contexts/AuthContext'
+import InfosIndexProvider from './contexts/InfosIndexContext'
 
 
 export default function App() {
@@ -12,7 +13,9 @@ export default function App() {
   return (
     <div>
     <AuthContextProvider>
-      {router}
+      <InfosIndexProvider>
+        {router}
+      </InfosIndexProvider>
     </AuthContextProvider>
     </div>
   )

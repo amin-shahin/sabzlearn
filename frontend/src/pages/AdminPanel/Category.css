@@ -99,17 +99,9 @@ ul {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-@font-face {
-  font-family: "vazir";
-  src: url("./../../fonts/Vazir/Vazir.eot");
-  src: url("./../../fonts/Vazir/Vazir.ttf");
-  src: url("./../../fonts/Vazir/Vazir.woff");
-  src: url("./../../fonts/Vazir/Vazir.woff2");
-}
-@font-face {
-  font-family: "lalezar";
-  src: url("./../../fonts/Lalezar-Font/OTF/Lalezar-Regular.otf");
-  src: url("./../../fonts/Lalezar-Font/TTF/Lalezar-Regular.ttf");
+.error-message {
+  display: none;
+  font-size: 13px;
 }
 #sidebar {
   background-color: #17203f;
@@ -386,131 +378,25 @@ ul {
 #home .home-header .home-left .home-profile .home-profile-icon i {
   color: #313131;
 }
-#home #home-content {
-  margin-top: 15px;
-  padding: 15px 10px;
+#home .home-title {
+  padding: 25px 0;
 }
-#home #home-content .home-content-latset-users {
-  background-color: #fff;
-  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
-  border-radius: 5px;
-}
-#home #home-content .home-content-latset-users .home-content-users-title {
-  padding: 20px 15px;
-}
-#home #home-content .home-content-latset-users .home-content-users-title span {
+#home .home-title span {
   font-size: 18px;
   font-family: "lalezar";
+  font-size: 22px;
 }
-#home
-  #home-content
-  .home-content-latset-users
-  .home-content-users-title
-  span
-  .signup {
-  color: #1943da;
-}
-#home #home-content .home-content-latset-users .home-content-users-table {
-  padding: 0 10px;
-}
-#home
-  #home-content
-  .home-content-latset-users
-  .home-content-users-table
-  table
-  thead {
-  background-color: #f2f7fd;
-}
-#home
-  #home-content
-  .home-content-latset-users
-  .home-content-users-table
-  table
-  thead
-  tr
-  th {
-  font-family: "lalezar";
-  border: none;
-  color: #67747e;
-  text-align: center;
-}
-#home
-  #home-content
-  .home-content-latset-users
-  .home-content-users-table
-  table
-  tbody
-  tr {
-  vertical-align: middle;
-}
-#home
-  #home-content
-  .home-content-latset-users
-  .home-content-users-table
-  table
-  tbody
-  tr
-  .profile-table {
-  width: 40px;
-  border-radius: 50%;
-}
-#home
-  #home-content
-  .home-content-latset-users
-  .home-content-users-table
-  table
-  tbody
-  tr
-  td {
-  text-align: center;
-}
-#home
-  #home-content
-  .home-content-latset-users
-  .home-content-users-table
-  table
-  tbody
-  tr
-  td
-  .edit-btn {
-  font-size: 13px;
-}
-#home
-  #home-content
-  .home-content-latset-users
-  .home-content-users-table
-  table
-  tbody
-  tr
-  td
-  .delete-btn {
-  font-size: 13px;
-}
-#home #home-content .home-content-edit {
-  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  padding: 20px 10px;
-}
-#home #home-content .home-content-edit .back-btn {
-  padding: 0 15px;
-}
-#home #home-content .home-content-edit .back-btn i {
-  cursor: pointer;
-}
-#home #home-content .home-content-edit .form {
+#home .form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-#home #home-content .home-content-edit .form .input {
+#home .form .input {
   margin: 5px 15px;
 }
-#home #home-content .home-content-edit .form .input input {
+#home .form .input input {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -526,43 +412,28 @@ ul {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-#home
-  #home-content
-  .home-content-edit
-  .form
-  .input
-  input::-webkit-input-placeholder {
+#home .form .input input::-webkit-input-placeholder {
   font-size: 13px;
 }
-#home
-  #home-content
-  .home-content-edit
-  .form
-  .input
-  input:-ms-input-placeholder {
+#home .form .input input:-ms-input-placeholder {
   font-size: 13px;
 }
-#home
-  #home-content
-  .home-content-edit
-  .form
-  .input
-  input::-ms-input-placeholder {
+#home .form .input input::-ms-input-placeholder {
   font-size: 13px;
 }
-#home #home-content .home-content-edit .form .input input::placeholder {
+#home .form .input input::placeholder {
   font-size: 13px;
 }
-#home #home-content .home-content-edit .form .input input:focus {
+#home .form .input input:focus {
   border: 1px solid #99f;
   -webkit-box-shadow: 0px 0px 5px 0px #b3b3b3;
   box-shadow: 0px 0px 5px 0px #b3b3b3;
 }
-#home #home-content .home-content-edit .form .input .input-title {
+#home .form .input .input-title {
   font-size: 18px;
   font-family: "lalezar";
 }
-#home #home-content .home-content-edit .form .bottom-form {
+#home .form .bottom-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -574,27 +445,19 @@ ul {
   align-items: center;
   margin: 5px 15px;
 }
-#home #home-content .home-content-edit .form .bottom-form .sex .input-title {
+#home .form .bottom-form .sex .input-title {
   font-size: 18px;
   font-family: "lalezar";
 }
-#home #home-content .home-content-edit .form .bottom-form .sex .radios {
+#home .form .bottom-form .sex .radios {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-#home #home-content .home-content-edit .form .bottom-form .sex .radios div {
+#home .form .bottom-form .sex .radios div {
   margin: 0 10px;
 }
-#home
-  #home-content
-  .home-content-edit
-  .form
-  .bottom-form
-  .sex
-  .radios
-  div
-  label {
+#home .form .bottom-form .sex .radios div label {
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -606,15 +469,7 @@ ul {
   -ms-flex-align: center;
   align-items: center;
 }
-#home
-  #home-content
-  .home-content-edit
-  .form
-  .bottom-form
-  .sex
-  .radios
-  div
-  input {
+#home .form .bottom-form .sex .radios div input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -626,26 +481,10 @@ ul {
   width: 15px;
   height: 15px;
 }
-#home
-  #home-content
-  .home-content-edit
-  .form
-  .bottom-form
-  .sex
-  .radios
-  div
-  input:checked {
+#home .form .bottom-form .sex .radios div input:checked {
   position: relative;
 }
-#home
-  #home-content
-  .home-content-edit
-  .form
-  .bottom-form
-  .sex
-  .radios
-  div
-  input:checked::before {
+#home .form .bottom-form .sex .radios div input:checked::before {
   content: "";
   position: absolute;
   top: 2px;
@@ -655,10 +494,10 @@ ul {
   background-color: #2774f5;
   border-radius: 50%;
 }
-#home #home-content .home-content-edit .form .bottom-form .submit-btn {
+#home .form .bottom-form .submit-btn {
   margin-top: 5px;
 }
-#home #home-content .home-content-edit .form .bottom-form .submit-btn input {
+#home .form .bottom-form .submit-btn input {
   background-color: #2774f5;
   border: none;
   border-radius: 3px;
@@ -669,79 +508,5 @@ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
-}
-#delete-modal {
-  width: 400px;
-  position: absolute;
-  top: 200px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  z-index: 10000;
-  background-color: #fff;
-  -webkit-box-shadow: 0px 0px 5px 1px #ccc;
-  box-shadow: 0px 0px 5px 1px #ccc;
-  padding: 30px 0;
-  border-radius: 3px;
-}
-#delete-modal .delete-modal-icon {
-  color: #fc1717;
-  font-size: 40px;
-}
-#delete-modal .delete-modal-title {
-  font-size: 20px;
-  font-family: "lalezar";
-  padding: 10px 0;
-}
-#delete-modal .delete-modal-btns button {
-  padding: 4px 30px;
-  font-size: 14px;
-  border-radius: 3px;
-}
-#delete-modal .delete-modal-btn-yes {
-  border: none;
-  background-color: #fc1717;
-  color: #fff;
-}
-#delete-modal .delete-modal-btn-no {
-  background-color: transparent;
-  color: #292929;
-  margin-left: 20px;
-  border: 1px solid #ccc;
-}
-.active-modal #delete-modal {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-#overlay {
-  display: none;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(24, 22, 22, 0.4);
-  position: absolute;
-  top: 0;
-}
-.active-modal #overlay {
-  display: block;
-}
-.active-modal {
-  overflow: hidden;
-}
-.active-modal-notification .home-notification-modal {
-  display: block !important;
 }
 /*# sourceMappingURL=main.css.map */
-.article-textarea{
-  height: 200px;
-  width: 100%;
-}

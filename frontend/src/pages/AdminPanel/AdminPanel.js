@@ -14,9 +14,11 @@ const AdminPanel = () => {
             </div>
             <div id="home" className="col-10">
                 <TopbarForAdminPanel/>
+                <div className="container-fluid" id="home-content">
+                  <Outlet/> 
+                </div>
             </div>
         </div>
-        <Outlet/>
         </>
      );
 }

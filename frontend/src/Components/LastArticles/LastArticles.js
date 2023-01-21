@@ -24,7 +24,7 @@ const LastArticles = () => {
         <div className="articles__content">
           
           <div className="row">
-            {allArticles.slice(0,3).map(article =>(
+            {allArticles.filter(article => article.publish ===1).slice(0,3).map(article =>(
               <ArticleBox {...article}/>
             ))}
           </div>

@@ -8,7 +8,7 @@ export default function CommentsTextArea({ comments,onSubmitComment }) {
 
   const authContextData = useContext(AuthContext)
   const [commentBody,setCommentBody] = useState('')
-
+  const [courseScoreByUser,setCourseScoreByUser] = useState('-1')
 
   return (
     <div class="comments">
@@ -55,6 +55,42 @@ export default function CommentsTextArea({ comments,onSubmitComment }) {
                         {comment.body}
                       </p>
                     </div>
+
+                      {
+                        comment.answerContent &&(
+                          <div class="comments__item">
+                          <div class="comments__question">
+                            <div class="comments__question-header">
+                              <div class="comments__question-header-right">
+                                <span class="comments__question-name comment-name">
+                                  {comment.answerContent.creator.name}
+                                </span>
+                                <span class="comments__question-status comment-status">
+                                  {comment.answerContent.creator.role === "ADMIN" ? " مدیر سایت" : "کاربر"}
+                                </span>
+                                <span class="comments__question-date comment-date">
+                                  {comment.answerContent.createdAt.slice(0, 10)}
+                                </span>
+                              </div>
+                              <div class="comments__question-header-left">
+                                <a
+                                  class="comments__question-header-link comment-link"
+                                  href="#"
+                                >
+                                  پاسخ
+                                </a>
+                              </div>
+                            </div>
+                            <div class="comments__question-text">
+                              <p class="comments__question-paragraph comment-paragraph">
+                                {comment.answerContent.body}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        )
+                      }
+
                   </div>
                 </div>
               </>
@@ -113,7 +149,7 @@ export default function CommentsTextArea({ comments,onSubmitComment }) {
         </span>
       </div>
       <div class="comments__respond">
-        <div class="comments__score">
+        {/* <div class="comments__score">
           <span class="comments__score-title">امتیاز شما</span>
           <div class="comments__score-input">
             <span class="comments__score-input-text">
@@ -121,14 +157,24 @@ export default function CommentsTextArea({ comments,onSubmitComment }) {
             </span>
             <i class="fas fa-angle-down	 comments__input-icon"></i>
           </div>
-        </div>
+        </div> */}
+        <select className="form-select form-control" onChange={(event)=> setCourseScoreByUser(event.target.value)}>
+            <option value='-1' className="form-control" > امتیاز خود را انتخاب کنید</option>
+            <option value='5'>عالی</option>
+            <option value='4'>خوب</option>
+            <option value='3'>متوسط</option>
+            <option value='2'>ضعیف</option>
+            <option value='1'>خیلی ضعیف</option>
+        </select>
+        
+
         <div class="comments__respond-content">
           <div class="comments__respond-title">دیدگاه شما *</div>
           <textarea class="comments__score-input-respond"  onChange={(event)=> setCommentBody(event.target.value)} >
           {commentBody}
           </textarea>
         </div>
-        <button type="submit" class="comments__respond-btn" onClick={()=>onSubmitComment(commentBody)}>
+        <button type="submit" class="comments__respond-btn" onClick={()=>onSubmitComment(commentBody,courseScoreByUser)}>
           ارسال
         </button>
       </div>

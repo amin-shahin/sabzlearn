@@ -41,19 +41,6 @@ const SidebarAdminPanel = () => {
         }
       }
 
-
-
-      // if(willApplay){
-      //   swal({
-      //     title:'با موفقیت خارج شدید',
-      //     icon:'success',
-      //     button:'تایید'
-      //   })
-      //   navigate('/')
-        
-      // }else{
-        
-      // }
     })
   }
 
@@ -83,7 +70,12 @@ const SidebarAdminPanel = () => {
               </Link>
             </li>
             <li>
-              <Link to="menues">
+              <Link to="sessions">
+                <span>جلسه های دوره ها</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="menus">
                 <span>منو ها</span>
               </Link>
             </li>
@@ -98,13 +90,23 @@ const SidebarAdminPanel = () => {
               </Link>
             </li>
             <li>
-              <Link to="">
+              <Link to="comments">
+                <span>کامنت ها</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="dis-count">
                 <span>کدهای تخفیف</span>
               </Link>
             </li>
             <li>
-              <Link to="">
+              <Link to="categories">
                 <span>دسته‌بندی‌ها</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="contacts">
+                <span> پیغام های ارتباط با ما</span>
               </Link>
             </li>
             <li>
