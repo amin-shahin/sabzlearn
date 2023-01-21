@@ -30,6 +30,14 @@ const schema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    status: {
+      type: String,
+      required: true,
+    },
+    discount: {
+      type: Number,
+      required: true,
+    },
     categoryID: {
       type: mongoose.Types.ObjectId,
       ref: "Category",

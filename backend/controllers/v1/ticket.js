@@ -1,6 +1,7 @@
 const departmentModel = require("../../models/department");
 const departmentSubModel = require("../../models/department-sub");
 const ticketModel = require("../../models/ticket");
+const courseModel = require("../../models/course");
 
 exports.create = async (req, res) => {
   const { departmentID, departmentSubID, title, priority, body, course } =
@@ -29,7 +30,8 @@ exports.create = async (req, res) => {
 
 exports.userTickets = async (req, res) => {
   const tickets = await ticketModel
-    .find({ user: req.user._id }).sort({ _id: -1 })
+    .find({ user: req.user._id })
+    .sort({ _id: -1 })
     .populate("departmentID")
     .populate("departmentSubID")
     .populate("user")
@@ -53,24 +55,29 @@ exports.userTickets = async (req, res) => {
 
 exports.getAll = async (req, res) => {
   const tickets = await ticketModel
-    .find({})
+    .find({ isAnswer: 0 })
     .populate("user")
+    .populate("course")
     .populate("departmentID")
     .populate("departmentSubID")
     .lean();
 
   let ticketsArray = [];
 
-  tickets.forEach((ticket) => {
+  tickets.forEach(async (ticket) => {
+
     if (ticket.isAnswer === 0) {
       ticketsArray.push({
         ...ticket,
         departmentID: ticket.departmentID.title,
         departmentSubID: ticket.departmentSubID.title,
         user: ticket.user.name,
+        course: ticket.course ? ticket.course.name : null
       });
     }
   });
+
+  console.log(ticketsArray);
 
   return res.json(ticketsArray);
 };
@@ -80,7 +87,10 @@ exports.getAnswer = async (req, res) => {
   const answerTicker = await ticketModel.findOne({ parent: id });
   const ticket = await ticketModel.findOne({ _id: id });
 
-  res.json({ ticket: ticket.body, answer: answerTicker ? answerTicker.body : null });
+  res.json({
+    ticket: ticket.body,
+    answer: answerTicker ? answerTicker.body : null,
+  });
 };
 
 exports.setAnswer = async (req, res) => {

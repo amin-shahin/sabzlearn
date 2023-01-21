@@ -1,4 +1,5 @@
 const offModel = require("../../models/off");
+const courseModel = require("../../models/course");
 
 exports.create = async (req, res) => {
   const { code, percent, course, max } = req.body;
@@ -60,4 +61,16 @@ exports.remove = async (req, res) => {
     return res.status(404).json({ message: "Off Code Not Found!" });
   }
   return res.json(deletedOff);
+};
+
+exports.setOnAll = async (req, res) => {
+  const { discount } = req.body;
+
+  console.log(discount);
+
+  const setDiscountsOnCourses = await courseModel.updateMany({
+    discount,
+  });
+  console.log();
+  return res.json({ msg: "Discounts set successfully ✌️" });
 };

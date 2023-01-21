@@ -28,13 +28,7 @@ const bcrypt = require("bcrypt");
 exports.getAll = async (req, res) => {
   const users = await userModel.find();
 
-  const allUsers = [];
-  for (const userItem of users) {
-    if (userItem.role !== "ADMIN") {
-      allUsers.push(userItem);
-    }
-  }
-  return res.json(allUsers);
+  return res.json(users);
 };
 
 exports.removeUser = async (req, res) => {
@@ -83,4 +77,18 @@ exports.updateUser = async (req, res) => {
   );
 
   return res.json(user);
+};
+
+exports.changeUserRole = async (req, res) => {
+  const { role, id } = req.body;
+  console.log(role);
+
+  const user = await userModel.findByIdAndUpdate(
+    { _id: id },
+    {
+      role: role
+    }
+  );
+
+  res.json({msg: 'User role changed successfully'});
 };
